@@ -9,6 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_inappwebview/src/in_app_webview/headless_in_app_webview.dart';
+import 'package:flutter_inappwebview/src/in_app_webview/windows/in_app_webview_windows.dart';
 import 'package:flutter_inappwebview/src/util.dart';
 
 import '../find_interaction/find_interaction_controller.dart';
@@ -83,8 +84,7 @@ class InAppWebView extends StatefulWidget implements WebView {
     this.onScrollChanged,
     @Deprecated('Use onDownloadStartRequest instead') this.onDownloadStart,
     this.onDownloadStartRequest,
-    @Deprecated('Use onLoadResourceWithCustomScheme instead')
-        this.onLoadResourceCustomScheme,
+    @Deprecated('Use onLoadResourceWithCustomScheme instead') this.onLoadResourceCustomScheme,
     this.onLoadResourceWithCustomScheme,
     this.onCreateWindow,
     this.onCloseWindow,
@@ -114,8 +114,7 @@ class InAppWebView extends StatefulWidget implements WebView {
     this.onZoomScaleChanged,
     @Deprecated('Use onSafeBrowsingHit instead') this.androidOnSafeBrowsingHit,
     this.onSafeBrowsingHit,
-    @Deprecated('Use onPermissionRequest instead')
-        this.androidOnPermissionRequest,
+    @Deprecated('Use onPermissionRequest instead') this.androidOnPermissionRequest,
     this.onPermissionRequest,
     @Deprecated('Use onGeolocationPermissionsShowPrompt instead')
         this.androidOnGeolocationPermissionsShowPrompt,
@@ -123,31 +122,24 @@ class InAppWebView extends StatefulWidget implements WebView {
     @Deprecated('Use onGeolocationPermissionsHidePrompt instead')
         this.androidOnGeolocationPermissionsHidePrompt,
     this.onGeolocationPermissionsHidePrompt,
-    @Deprecated('Use shouldInterceptRequest instead')
-        this.androidShouldInterceptRequest,
+    @Deprecated('Use shouldInterceptRequest instead') this.androidShouldInterceptRequest,
     this.shouldInterceptRequest,
-    @Deprecated('Use onRenderProcessGone instead')
-        this.androidOnRenderProcessGone,
+    @Deprecated('Use onRenderProcessGone instead') this.androidOnRenderProcessGone,
     this.onRenderProcessGone,
-    @Deprecated('Use onRenderProcessResponsive instead')
-        this.androidOnRenderProcessResponsive,
+    @Deprecated('Use onRenderProcessResponsive instead') this.androidOnRenderProcessResponsive,
     this.onRenderProcessResponsive,
-    @Deprecated('Use onRenderProcessUnresponsive instead')
-        this.androidOnRenderProcessUnresponsive,
+    @Deprecated('Use onRenderProcessUnresponsive instead') this.androidOnRenderProcessUnresponsive,
     this.onRenderProcessUnresponsive,
-    @Deprecated('Use onFormResubmission instead')
-        this.androidOnFormResubmission,
+    @Deprecated('Use onFormResubmission instead') this.androidOnFormResubmission,
     this.onFormResubmission,
     @Deprecated('Use onZoomScaleChanged instead') this.androidOnScaleChanged,
     @Deprecated('Use onReceivedIcon instead') this.androidOnReceivedIcon,
     this.onReceivedIcon,
-    @Deprecated('Use onReceivedTouchIconUrl instead')
-        this.androidOnReceivedTouchIconUrl,
+    @Deprecated('Use onReceivedTouchIconUrl instead') this.androidOnReceivedTouchIconUrl,
     this.onReceivedTouchIconUrl,
     @Deprecated('Use onJsBeforeUnload instead') this.androidOnJsBeforeUnload,
     this.onJsBeforeUnload,
-    @Deprecated('Use onReceivedLoginRequest instead')
-        this.androidOnReceivedLoginRequest,
+    @Deprecated('Use onReceivedLoginRequest instead') this.androidOnReceivedLoginRequest,
     this.onReceivedLoginRequest,
     this.onPermissionRequestCanceled,
     this.onRequestFocus,
@@ -157,11 +149,9 @@ class InAppWebView extends StatefulWidget implements WebView {
     @Deprecated('Use onDidReceiveServerRedirectForProvisionalNavigation instead')
         this.iosOnDidReceiveServerRedirectForProvisionalNavigation,
     this.onDidReceiveServerRedirectForProvisionalNavigation,
-    @Deprecated('Use onNavigationResponse instead')
-        this.iosOnNavigationResponse,
+    @Deprecated('Use onNavigationResponse instead') this.iosOnNavigationResponse,
     this.onNavigationResponse,
-    @Deprecated('Use shouldAllowDeprecatedTLS instead')
-        this.iosShouldAllowDeprecatedTLS,
+    @Deprecated('Use shouldAllowDeprecatedTLS instead') this.iosShouldAllowDeprecatedTLS,
     this.shouldAllowDeprecatedTLS,
     this.onCameraCaptureStateChanged,
     this.onMicrophoneCaptureStateChanged,
@@ -176,31 +166,27 @@ class InAppWebView extends StatefulWidget implements WebView {
   ///Use [onGeolocationPermissionsHidePrompt] instead.
   @override
   @Deprecated('Use onGeolocationPermissionsHidePrompt instead')
-  final void Function(InAppWebViewController controller)?
-      androidOnGeolocationPermissionsHidePrompt;
+  final void Function(InAppWebViewController controller)? androidOnGeolocationPermissionsHidePrompt;
 
   ///Use [onGeolocationPermissionsShowPrompt] instead.
   @override
   @Deprecated('Use onGeolocationPermissionsShowPrompt instead')
   final Future<GeolocationPermissionShowPromptResponse?> Function(
-          InAppWebViewController controller, String origin)?
-      androidOnGeolocationPermissionsShowPrompt;
+      InAppWebViewController controller, String origin)? androidOnGeolocationPermissionsShowPrompt;
 
   ///Use [onPermissionRequest] instead.
   @override
   @Deprecated('Use onPermissionRequest instead')
   final Future<PermissionRequestResponse?> Function(
-      InAppWebViewController controller,
-      String origin,
-      List<String> resources)? androidOnPermissionRequest;
+          InAppWebViewController controller, String origin, List<String> resources)?
+      androidOnPermissionRequest;
 
   ///Use [onSafeBrowsingHit] instead.
   @override
   @Deprecated('Use onSafeBrowsingHit instead')
   final Future<SafeBrowsingResponse?> Function(
-      InAppWebViewController controller,
-      Uri url,
-      SafeBrowsingThreat? threatType)? androidOnSafeBrowsingHit;
+          InAppWebViewController controller, Uri url, SafeBrowsingThreat? threatType)?
+      androidOnSafeBrowsingHit;
 
   @override
   final InAppWebViewInitialData? initialData;
@@ -235,12 +221,10 @@ class InAppWebView extends StatefulWidget implements WebView {
   final ContextMenu? contextMenu;
 
   @override
-  final void Function(InAppWebViewController controller, WebUri? url)?
-      onPageCommitVisible;
+  final void Function(InAppWebViewController controller, WebUri? url)? onPageCommitVisible;
 
   @override
-  final void Function(InAppWebViewController controller, String? title)?
-      onTitleChanged;
+  final void Function(InAppWebViewController controller, String? title)? onTitleChanged;
 
   ///Use [onDidReceiveServerRedirectForProvisionalNavigation] instead.
   @override
@@ -251,41 +235,37 @@ class InAppWebView extends StatefulWidget implements WebView {
   ///Use [onWebContentProcessDidTerminate] instead.
   @override
   @Deprecated('Use onWebContentProcessDidTerminate instead')
-  final void Function(InAppWebViewController controller)?
-      iosOnWebContentProcessDidTerminate;
+  final void Function(InAppWebViewController controller)? iosOnWebContentProcessDidTerminate;
 
   ///Use [onNavigationResponse] instead.
   @override
   @Deprecated('Use onNavigationResponse instead')
   final Future<IOSNavigationResponseAction?> Function(
-      InAppWebViewController controller,
-      IOSWKNavigationResponse navigationResponse)? iosOnNavigationResponse;
+          InAppWebViewController controller, IOSWKNavigationResponse navigationResponse)?
+      iosOnNavigationResponse;
 
   ///Use [shouldAllowDeprecatedTLS] instead.
   @override
   @Deprecated('Use shouldAllowDeprecatedTLS instead')
   final Future<IOSShouldAllowDeprecatedTLSAction?> Function(
-      InAppWebViewController controller,
-      URLAuthenticationChallenge challenge)? iosShouldAllowDeprecatedTLS;
+          InAppWebViewController controller, URLAuthenticationChallenge challenge)?
+      iosShouldAllowDeprecatedTLS;
 
   @override
   final Future<AjaxRequestAction> Function(
-          InAppWebViewController controller, AjaxRequest ajaxRequest)?
-      onAjaxProgress;
+      InAppWebViewController controller, AjaxRequest ajaxRequest)? onAjaxProgress;
 
   @override
   final Future<AjaxRequestAction?> Function(
-          InAppWebViewController controller, AjaxRequest ajaxRequest)?
-      onAjaxReadyStateChange;
+      InAppWebViewController controller, AjaxRequest ajaxRequest)? onAjaxReadyStateChange;
 
   @override
-  final void Function(
-          InAppWebViewController controller, ConsoleMessage consoleMessage)?
+  final void Function(InAppWebViewController controller, ConsoleMessage consoleMessage)?
       onConsoleMessage;
 
   @override
-  final Future<bool?> Function(InAppWebViewController controller,
-      CreateWindowAction createWindowAction)? onCreateWindow;
+  final Future<bool?> Function(
+      InAppWebViewController controller, CreateWindowAction createWindowAction)? onCreateWindow;
 
   @override
   final void Function(InAppWebViewController controller)? onCloseWindow;
@@ -299,25 +279,22 @@ class InAppWebView extends StatefulWidget implements WebView {
   ///Use [onReceivedIcon] instead
   @override
   @Deprecated('Use onReceivedIcon instead')
-  final void Function(InAppWebViewController controller, Uint8List icon)?
-      androidOnReceivedIcon;
+  final void Function(InAppWebViewController controller, Uint8List icon)? androidOnReceivedIcon;
 
   ///Use [onReceivedTouchIconUrl] instead
   @override
   @Deprecated('Use onReceivedTouchIconUrl instead')
-  final void Function(
-          InAppWebViewController controller, Uri url, bool precomposed)?
+  final void Function(InAppWebViewController controller, Uri url, bool precomposed)?
       androidOnReceivedTouchIconUrl;
 
   ///Use [onDownloadStartRequest] instead
   @Deprecated('Use onDownloadStartRequest instead')
   @override
-  final void Function(InAppWebViewController controller, Uri url)?
-      onDownloadStart;
+  final void Function(InAppWebViewController controller, Uri url)? onDownloadStart;
 
   @override
-  final void Function(InAppWebViewController controller,
-      DownloadStartRequest downloadStartRequest)? onDownloadStartRequest;
+  final void Function(InAppWebViewController controller, DownloadStartRequest downloadStartRequest)?
+      onDownloadStartRequest;
 
   ///Use [FindInteractionController.onFindResultReceived] instead.
   @Deprecated('Use FindInteractionController.onFindResultReceived instead')
@@ -327,51 +304,46 @@ class InAppWebView extends StatefulWidget implements WebView {
 
   @override
   final Future<JsAlertResponse?> Function(
-          InAppWebViewController controller, JsAlertRequest jsAlertRequest)?
-      onJsAlert;
+      InAppWebViewController controller, JsAlertRequest jsAlertRequest)? onJsAlert;
 
   @override
   final Future<JsConfirmResponse?> Function(
-          InAppWebViewController controller, JsConfirmRequest jsConfirmRequest)?
-      onJsConfirm;
+      InAppWebViewController controller, JsConfirmRequest jsConfirmRequest)? onJsConfirm;
 
   @override
   final Future<JsPromptResponse?> Function(
-          InAppWebViewController controller, JsPromptRequest jsPromptRequest)?
-      onJsPrompt;
+      InAppWebViewController controller, JsPromptRequest jsPromptRequest)? onJsPrompt;
 
   ///Use [onReceivedError] instead.
   @Deprecated("Use onReceivedError instead")
   @override
-  final void Function(InAppWebViewController controller, Uri? url, int code,
-      String message)? onLoadError;
+  final void Function(InAppWebViewController controller, Uri? url, int code, String message)?
+      onLoadError;
 
   @override
-  final void Function(InAppWebViewController controller,
-      WebResourceRequest request, WebResourceError error)? onReceivedError;
+  final void Function(
+          InAppWebViewController controller, WebResourceRequest request, WebResourceError error)?
+      onReceivedError;
 
   ///Use [onReceivedHttpError] instead.
   @Deprecated("Use onReceivedHttpError instead")
   @override
-  final void Function(InAppWebViewController controller, Uri? url,
-      int statusCode, String description)? onLoadHttpError;
+  final void Function(
+          InAppWebViewController controller, Uri? url, int statusCode, String description)?
+      onLoadHttpError;
 
   @override
-  final void Function(
-      InAppWebViewController controller,
-      WebResourceRequest request,
+  final void Function(InAppWebViewController controller, WebResourceRequest request,
       WebResourceResponse errorResponse)? onReceivedHttpError;
 
   @override
-  final void Function(
-          InAppWebViewController controller, LoadedResource resource)?
-      onLoadResource;
+  final void Function(InAppWebViewController controller, LoadedResource resource)? onLoadResource;
 
   ///Use [onLoadResourceWithCustomScheme] instead.
   @Deprecated('Use onLoadResourceWithCustomScheme instead')
   @override
-  final Future<CustomSchemeResponse?> Function(
-      InAppWebViewController controller, Uri url)? onLoadResourceCustomScheme;
+  final Future<CustomSchemeResponse?> Function(InAppWebViewController controller, Uri url)?
+      onLoadResourceCustomScheme;
 
   @override
   final Future<CustomSchemeResponse?> Function(
@@ -379,16 +351,14 @@ class InAppWebView extends StatefulWidget implements WebView {
       onLoadResourceWithCustomScheme;
 
   @override
-  final void Function(InAppWebViewController controller, WebUri? url)?
-      onLoadStart;
+  final void Function(InAppWebViewController controller, WebUri? url)? onLoadStart;
 
   @override
-  final void Function(InAppWebViewController controller, WebUri? url)?
-      onLoadStop;
+  final void Function(InAppWebViewController controller, WebUri? url)? onLoadStop;
 
   @override
-  final void Function(InAppWebViewController controller,
-      InAppWebViewHitTestResult hitTestResult)? onLongPressHitTestResult;
+  final void Function(InAppWebViewController controller, InAppWebViewHitTestResult hitTestResult)?
+      onLongPressHitTestResult;
 
   ///Use [onPrintRequest] instead
   @Deprecated("Use onPrintRequest instead")
@@ -396,47 +366,45 @@ class InAppWebView extends StatefulWidget implements WebView {
   final void Function(InAppWebViewController controller, Uri? url)? onPrint;
 
   @override
-  final Future<bool?> Function(InAppWebViewController controller, WebUri? url,
-      PrintJobController? printJobController)? onPrintRequest;
+  final Future<bool?> Function(
+          InAppWebViewController controller, WebUri? url, PrintJobController? printJobController)?
+      onPrintRequest;
 
   @override
-  final void Function(InAppWebViewController controller, int progress)?
-      onProgressChanged;
+  final void Function(InAppWebViewController controller, int progress)? onProgressChanged;
 
   @override
-  final Future<ClientCertResponse?> Function(InAppWebViewController controller,
-      URLAuthenticationChallenge challenge)? onReceivedClientCertRequest;
+  final Future<ClientCertResponse?> Function(
+          InAppWebViewController controller, URLAuthenticationChallenge challenge)?
+      onReceivedClientCertRequest;
 
   @override
-  final Future<HttpAuthResponse?> Function(InAppWebViewController controller,
-      URLAuthenticationChallenge challenge)? onReceivedHttpAuthRequest;
+  final Future<HttpAuthResponse?> Function(
+          InAppWebViewController controller, URLAuthenticationChallenge challenge)?
+      onReceivedHttpAuthRequest;
 
   @override
   final Future<ServerTrustAuthResponse?> Function(
-      InAppWebViewController controller,
-      URLAuthenticationChallenge challenge)? onReceivedServerTrustAuthRequest;
+          InAppWebViewController controller, URLAuthenticationChallenge challenge)?
+      onReceivedServerTrustAuthRequest;
 
   @override
-  final void Function(InAppWebViewController controller, int x, int y)?
-      onScrollChanged;
+  final void Function(InAppWebViewController controller, int x, int y)? onScrollChanged;
 
   @override
-  final void Function(
-          InAppWebViewController controller, WebUri? url, bool? isReload)?
+  final void Function(InAppWebViewController controller, WebUri? url, bool? isReload)?
       onUpdateVisitedHistory;
 
   @override
   final void Function(InAppWebViewController controller)? onWebViewCreated;
 
   @override
-  final Future<AjaxRequest?> Function(
-          InAppWebViewController controller, AjaxRequest ajaxRequest)?
+  final Future<AjaxRequest?> Function(InAppWebViewController controller, AjaxRequest ajaxRequest)?
       shouldInterceptAjaxRequest;
 
   @override
   final Future<FetchRequest?> Function(
-          InAppWebViewController controller, FetchRequest fetchRequest)?
-      shouldInterceptFetchRequest;
+      InAppWebViewController controller, FetchRequest fetchRequest)? shouldInterceptFetchRequest;
 
   @override
   final Future<NavigationActionPolicy?> Function(
@@ -450,67 +418,61 @@ class InAppWebView extends StatefulWidget implements WebView {
   final void Function(InAppWebViewController controller)? onExitFullscreen;
 
   @override
-  final void Function(InAppWebViewController controller, int x, int y,
-      bool clampedX, bool clampedY)? onOverScrolled;
+  final void Function(
+          InAppWebViewController controller, int x, int y, bool clampedX, bool clampedY)?
+      onOverScrolled;
 
   @override
-  final void Function(
-          InAppWebViewController controller, double oldScale, double newScale)?
+  final void Function(InAppWebViewController controller, double oldScale, double newScale)?
       onZoomScaleChanged;
 
   ///Use [shouldInterceptRequest] instead.
   @override
   @Deprecated('Use shouldInterceptRequest instead')
   final Future<WebResourceResponse?> Function(
-          InAppWebViewController controller, WebResourceRequest request)?
-      androidShouldInterceptRequest;
+      InAppWebViewController controller, WebResourceRequest request)? androidShouldInterceptRequest;
 
   ///Use [onRenderProcessUnresponsive] instead.
   @override
   @Deprecated('Use onRenderProcessUnresponsive instead')
-  final Future<WebViewRenderProcessAction?> Function(
-          InAppWebViewController controller, Uri? url)?
+  final Future<WebViewRenderProcessAction?> Function(InAppWebViewController controller, Uri? url)?
       androidOnRenderProcessUnresponsive;
 
   ///Use [onRenderProcessResponsive] instead.
   @override
   @Deprecated('Use onRenderProcessResponsive instead')
-  final Future<WebViewRenderProcessAction?> Function(
-          InAppWebViewController controller, Uri? url)?
+  final Future<WebViewRenderProcessAction?> Function(InAppWebViewController controller, Uri? url)?
       androidOnRenderProcessResponsive;
 
   ///Use [onRenderProcessGone] instead.
   @override
   @Deprecated('Use onRenderProcessGone instead')
-  final void Function(
-          InAppWebViewController controller, RenderProcessGoneDetail detail)?
+  final void Function(InAppWebViewController controller, RenderProcessGoneDetail detail)?
       androidOnRenderProcessGone;
 
   ///Use [onFormResubmission] instead.
   @override
   @Deprecated('Use onFormResubmission instead')
-  final Future<FormResubmissionAction?> Function(
-      InAppWebViewController controller, Uri? url)? androidOnFormResubmission;
+  final Future<FormResubmissionAction?> Function(InAppWebViewController controller, Uri? url)?
+      androidOnFormResubmission;
 
   ///Use [onZoomScaleChanged] instead.
   @Deprecated('Use onZoomScaleChanged instead')
   @override
-  final void Function(
-          InAppWebViewController controller, double oldScale, double newScale)?
+  final void Function(InAppWebViewController controller, double oldScale, double newScale)?
       androidOnScaleChanged;
 
   ///Use [onJsBeforeUnload] instead.
   @override
   @Deprecated('Use onJsBeforeUnload instead')
   final Future<JsBeforeUnloadResponse?> Function(
-      InAppWebViewController controller,
-      JsBeforeUnloadRequest jsBeforeUnloadRequest)? androidOnJsBeforeUnload;
+          InAppWebViewController controller, JsBeforeUnloadRequest jsBeforeUnloadRequest)?
+      androidOnJsBeforeUnload;
 
   ///Use [onReceivedLoginRequest] instead.
   @override
   @Deprecated('Use onReceivedLoginRequest instead')
-  final void Function(
-          InAppWebViewController controller, LoginRequest loginRequest)?
+  final void Function(InAppWebViewController controller, LoginRequest loginRequest)?
       androidOnReceivedLoginRequest;
 
   @override
@@ -518,87 +480,76 @@ class InAppWebView extends StatefulWidget implements WebView {
       onDidReceiveServerRedirectForProvisionalNavigation;
 
   @override
-  final Future<FormResubmissionAction?> Function(
-      InAppWebViewController controller, WebUri? url)? onFormResubmission;
+  final Future<FormResubmissionAction?> Function(InAppWebViewController controller, WebUri? url)?
+      onFormResubmission;
 
   @override
-  final void Function(InAppWebViewController controller)?
-      onGeolocationPermissionsHidePrompt;
+  final void Function(InAppWebViewController controller)? onGeolocationPermissionsHidePrompt;
 
   @override
   final Future<GeolocationPermissionShowPromptResponse?> Function(
-          InAppWebViewController controller, String origin)?
-      onGeolocationPermissionsShowPrompt;
+      InAppWebViewController controller, String origin)? onGeolocationPermissionsShowPrompt;
 
   @override
   final Future<JsBeforeUnloadResponse?> Function(
-      InAppWebViewController controller,
-      JsBeforeUnloadRequest jsBeforeUnloadRequest)? onJsBeforeUnload;
+          InAppWebViewController controller, JsBeforeUnloadRequest jsBeforeUnloadRequest)?
+      onJsBeforeUnload;
 
   @override
   final Future<NavigationResponseAction?> Function(
-      InAppWebViewController controller,
-      NavigationResponse navigationResponse)? onNavigationResponse;
+          InAppWebViewController controller, NavigationResponse navigationResponse)?
+      onNavigationResponse;
 
   @override
-  final Future<PermissionResponse?> Function(InAppWebViewController controller,
-      PermissionRequest permissionRequest)? onPermissionRequest;
+  final Future<PermissionResponse?> Function(
+      InAppWebViewController controller, PermissionRequest permissionRequest)? onPermissionRequest;
 
   @override
-  final void Function(InAppWebViewController controller, Uint8List icon)?
-      onReceivedIcon;
+  final void Function(InAppWebViewController controller, Uint8List icon)? onReceivedIcon;
 
   @override
-  final void Function(
-          InAppWebViewController controller, LoginRequest loginRequest)?
+  final void Function(InAppWebViewController controller, LoginRequest loginRequest)?
       onReceivedLoginRequest;
 
   @override
-  final void Function(InAppWebViewController controller,
-      PermissionRequest permissionRequest)? onPermissionRequestCanceled;
+  final void Function(InAppWebViewController controller, PermissionRequest permissionRequest)?
+      onPermissionRequestCanceled;
 
   @override
   final void Function(InAppWebViewController controller)? onRequestFocus;
 
   @override
-  final void Function(
-          InAppWebViewController controller, WebUri url, bool precomposed)?
+  final void Function(InAppWebViewController controller, WebUri url, bool precomposed)?
       onReceivedTouchIconUrl;
 
   @override
-  final void Function(
-          InAppWebViewController controller, RenderProcessGoneDetail detail)?
+  final void Function(InAppWebViewController controller, RenderProcessGoneDetail detail)?
       onRenderProcessGone;
 
   @override
   final Future<WebViewRenderProcessAction?> Function(
-          InAppWebViewController controller, WebUri? url)?
-      onRenderProcessResponsive;
+      InAppWebViewController controller, WebUri? url)? onRenderProcessResponsive;
 
   @override
   final Future<WebViewRenderProcessAction?> Function(
-          InAppWebViewController controller, WebUri? url)?
-      onRenderProcessUnresponsive;
+      InAppWebViewController controller, WebUri? url)? onRenderProcessUnresponsive;
 
   @override
   final Future<SafeBrowsingResponse?> Function(
-      InAppWebViewController controller,
-      WebUri url,
-      SafeBrowsingThreat? threatType)? onSafeBrowsingHit;
+          InAppWebViewController controller, WebUri url, SafeBrowsingThreat? threatType)?
+      onSafeBrowsingHit;
 
   @override
-  final void Function(InAppWebViewController controller)?
-      onWebContentProcessDidTerminate;
+  final void Function(InAppWebViewController controller)? onWebContentProcessDidTerminate;
 
   @override
   final Future<ShouldAllowDeprecatedTLSAction?> Function(
-      InAppWebViewController controller,
-      URLAuthenticationChallenge challenge)? shouldAllowDeprecatedTLS;
+          InAppWebViewController controller, URLAuthenticationChallenge challenge)?
+      shouldAllowDeprecatedTLS;
 
   @override
   final Future<WebResourceResponse?> Function(
-          InAppWebViewController controller, WebResourceRequest request)?
-      shouldInterceptRequest;
+      InAppWebViewController controller, WebResourceRequest request)? shouldInterceptRequest;
 
   @override
   final Future<void> Function(
@@ -615,8 +566,8 @@ class InAppWebView extends StatefulWidget implements WebView {
   )? onMicrophoneCaptureStateChanged;
 
   @override
-  final void Function(InAppWebViewController controller, Size oldContentSize,
-      Size newContentSize)? onContentSizeChanged;
+  final void Function(InAppWebViewController controller, Size oldContentSize, Size newContentSize)?
+      onContentSizeChanged;
 }
 
 class _InAppWebViewState extends State<InAppWebView> {
@@ -629,11 +580,10 @@ class _InAppWebViewState extends State<InAppWebView> {
         widget.initialOptions?.toMap() ??
         {};
 
-    Map<String, dynamic> pullToRefreshSettings =
-        widget.pullToRefreshController?.settings.toMap() ??
-            // ignore: deprecated_member_use_from_same_package
-            widget.pullToRefreshController?.options.toMap() ??
-            PullToRefreshSettings(enabled: false).toMap();
+    Map<String, dynamic> pullToRefreshSettings = widget.pullToRefreshController?.settings.toMap() ??
+        // ignore: deprecated_member_use_from_same_package
+        widget.pullToRefreshController?.options.toMap() ??
+        PullToRefreshSettings(enabled: false).toMap();
 
     if (kIsWeb) {
       return HtmlElementView(
@@ -645,9 +595,7 @@ class _InAppWebViewState extends State<InAppWebView> {
           webViewHtmlElement.initialFile = widget.initialFile;
           webViewHtmlElement.initialData = widget.initialData;
           webViewHtmlElement.headlessWebViewId =
-              widget.headlessWebView?.isRunning() ?? false
-                  ? widget.headlessWebView?.id
-                  : null;
+              widget.headlessWebView?.isRunning() ?? false ? widget.headlessWebView?.id : null;
           webViewHtmlElement.prepare();
           if (webViewHtmlElement.headlessWebViewId == null) {
             webViewHtmlElement.makeInitialLoad();
@@ -676,8 +624,8 @@ class _InAppWebViewState extends State<InAppWebView> {
         ) {
           return AndroidViewSurface(
             controller: controller as AndroidViewController,
-            gestureRecognizers: widget.gestureRecognizers ??
-                const <Factory<OneSequenceGestureRecognizer>>{},
+            gestureRecognizers:
+                widget.gestureRecognizers ?? const <Factory<OneSequenceGestureRecognizer>>{},
             hitTestBehavior: PlatformViewHitTestBehavior.opaque,
           );
         },
@@ -686,8 +634,7 @@ class _InAppWebViewState extends State<InAppWebView> {
             hybridComposition: useHybridComposition,
             id: params.id,
             viewType: 'com.pichillilorenzo/flutter_inappwebview',
-            layoutDirection:
-                Directionality.maybeOf(context) ?? TextDirection.rtl,
+            layoutDirection: Directionality.maybeOf(context) ?? TextDirection.rtl,
             creationParams: <String, dynamic>{
               'initialUrlRequest': widget.initialUrlRequest?.toMap(),
               'initialFile': widget.initialFile,
@@ -695,25 +642,20 @@ class _InAppWebViewState extends State<InAppWebView> {
               'initialSettings': initialSettings,
               'contextMenu': widget.contextMenu?.toMap() ?? {},
               'windowId': widget.windowId,
-              'headlessWebViewId': widget.headlessWebView?.isRunning() ?? false
-                  ? widget.headlessWebView?.id
-                  : null,
+              'headlessWebViewId':
+                  widget.headlessWebView?.isRunning() ?? false ? widget.headlessWebView?.id : null,
               'implementation': widget.implementation.toNativeValue(),
-              'initialUserScripts':
-                  widget.initialUserScripts?.map((e) => e.toMap()).toList() ??
-                      [],
+              'initialUserScripts': widget.initialUserScripts?.map((e) => e.toMap()).toList() ?? [],
               'pullToRefreshSettings': pullToRefreshSettings
             },
           )
             ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
-            ..addOnPlatformViewCreatedListener(
-                (id) => _onPlatformViewCreated(id))
+            ..addOnPlatformViewCreatedListener((id) => _onPlatformViewCreated(id))
             ..create();
         },
       );
     } else if (defaultTargetPlatform ==
-        TargetPlatform
-            .iOS /* || defaultTargetPlatform == TargetPlatform.macOS*/) {
+        TargetPlatform.iOS /* || defaultTargetPlatform == TargetPlatform.macOS*/) {
       return UiKitView(
         viewType: 'com.pichillilorenzo/flutter_inappwebview',
         onPlatformViewCreated: _onPlatformViewCreated,
@@ -725,19 +667,19 @@ class _InAppWebViewState extends State<InAppWebView> {
           'initialSettings': initialSettings,
           'contextMenu': widget.contextMenu?.toMap() ?? {},
           'windowId': widget.windowId,
-          'headlessWebViewId': widget.headlessWebView?.isRunning() ?? false
-              ? widget.headlessWebView?.id
-              : null,
+          'headlessWebViewId':
+              widget.headlessWebView?.isRunning() ?? false ? widget.headlessWebView?.id : null,
           'implementation': widget.implementation.toNativeValue(),
-          'initialUserScripts':
-              widget.initialUserScripts?.map((e) => e.toMap()).toList() ?? [],
+          'initialUserScripts': widget.initialUserScripts?.map((e) => e.toMap()).toList() ?? [],
           'pullToRefreshSettings': pullToRefreshSettings
         },
         creationParamsCodec: const StandardMessageCodec(),
       );
+    } else if (defaultTargetPlatform == TargetPlatform.windows) {
+      return WindowsInAppWebView();
+    } else {
+      return Text('$defaultTargetPlatform is not yet supported by the flutter_inappwebview plugin');
     }
-    return Text(
-        '$defaultTargetPlatform is not yet supported by the flutter_inappwebview plugin');
   }
 
   @override
@@ -748,9 +690,7 @@ class _InAppWebViewState extends State<InAppWebView> {
   @override
   void dispose() {
     dynamic viewId = _controller?.getViewId();
-    if (viewId != null &&
-        kIsWeb &&
-        WebPlatformManager.webViews.containsKey(viewId)) {
+    if (viewId != null && kIsWeb && WebPlatformManager.webViews.containsKey(viewId)) {
       WebPlatformManager.webViews.remove(viewId);
     }
     super.dispose();

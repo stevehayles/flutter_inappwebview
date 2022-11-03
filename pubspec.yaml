@@ -16,6 +16,7 @@ dependencies:
     sdk: flutter
   js: ^0.6.4
   flutter_inappwebview_internal_annotations: ^1.1.0
+  window_manager: ^0.2.7
 
 dev_dependencies:
   flutter_test:
@@ -44,6 +45,8 @@ flutter:
       web:
         pluginClass: FlutterInAppWebViewWebPlatform
         fileName: flutter_inappwebview.dart
+      windows:
+        pluginClass: FlutterInappwebviewPluginCApi
 
   assets:
     - packages/flutter_inappwebview/assets/t_rex_runner/t-rex.html
